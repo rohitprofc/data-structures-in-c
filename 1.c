@@ -4,7 +4,7 @@
 void main()
 {
     int a[100], i, found = 0, n, key;
-    printf("Enter no.of elements in an array: ");
+    printf("Enter no.of elements in an array: \n");
     scanf("%d", &n);
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)

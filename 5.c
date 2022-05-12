@@ -6,7 +6,7 @@ void main()
     int a[100], i, j, n, unsort_ele;
     printf("Enter no.of elements: ");
     scanf("%d", &n);
-    printf("Enter elements into array :\n");
+    printf("Enter elements into array: \n");
     for (i = 0; i < n; i++)
     {
         printf("Element - %d: ", i);
@@ -32,7 +32,7 @@ void main()
 /*
 Output:-
 Enter no.of elements: 5
-Enter elements into array :
+Enter elements into array:
 Element - 0: 63
 Element - 1: 55
 Element - 2: 45
