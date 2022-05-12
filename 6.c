@@ -32,7 +32,7 @@ void main()
 /*
 Output:-
 Enter no.of elements: 5
-Enter elements into array: 
+Enter elements into array:
 Element - 0: 90
 Element - 1: 10
 Element - 2: 80
