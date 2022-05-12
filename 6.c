@@ -29,7 +29,6 @@ void main()
         printf("Element - %d: %d\n", i, a[i]);
     }
 }
-
 /*
 Output:-
 Enter no.of elements: 5
