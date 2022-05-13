@@ -1,10 +1,11 @@
 // Linear Search Non - Recursion
 
 #include <stdio.h>
+int nonrecur_search(int[], int, int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, key;
-    printf("Enter no.of elements in an array: \n");
+    printf("Enter no.of elements in an array: ");
     scanf("%d", &n);
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)
@@ -14,21 +15,26 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
+    nonrecur_search(a, 0, key, n, found);
+}
+int nonrecur_search(int a[], int i, int key, int n, int found)
+{
     for (i = 0; i < n; i++)
     {
         if (key == a[i])
         {
             found = 1;
             printf("Key value found at position %d\n", i);
-            printf("Search is successful\n");
+            printf("Search Successful\n");
             break;
         }
     }
-    if (found == 0)
+    if (found != 1)
     {
         printf("Key value not found\n");
     }
 }
+
 /*
 Output 1:-
 Enter no.of elements in an array: 3
