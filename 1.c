@@ -34,7 +34,6 @@ int nonrecur_search(int a[], int i, int key, int n, int found)
         printf("Key value not found\n");
     }
 }
-
 /*
 Output 1:-
 Enter no.of elements in an array: 3
