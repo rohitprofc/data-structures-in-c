@@ -1,7 +1,7 @@
 // Linear Search Non - Recursion
 
 #include <stdio.h>
-int nonrecur_search(int[], int, int, int, int);
+int nonrecur_search(int[], int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, key;
@@ -15,23 +15,25 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    nonrecur_search(a, 0, key, n, found);
+    found = nonrecur_search(a, 0, key, n);
+    if (found == 1)
+    {
+        printf("Search Successful\n");
+    }
+    else
+    {
+        printf("Key value not found\n");
+    }
 }
-int nonrecur_search(int a[], int i, int key, int n, int found)
+int nonrecur_search(int a[], int i, int key, int n)
 {
     for (i = 0; i < n; i++)
     {
         if (key == a[i])
         {
-            found = 1;
             printf("Key value found at position %d\n", i);
-            printf("Search Successful\n");
-            break;
+            return 1;
         }
-    }
-    if (found != 1)
-    {
-        printf("Key value not found\n");
     }
 }
 /*
