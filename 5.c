@@ -1,6 +1,7 @@
 // Insertion Sorting
 
 #include <stdio.h>
+void insertion_sort(int[], int);
 void main()
 {
     int a[100], i, j, n, unsort_ele;
@@ -13,6 +14,15 @@ void main()
         scanf("%d", &a[i]);
     }
     printf("Elements after sorting:\n");
+    insertion_sort(a, n);
+    for (i = 0; i < n; i++)
+    {
+        printf("Element - %d: %d\n", i, a[i]);
+    }
+}
+void insertion_sort(int a[], int n)
+{
+    int i, j, unsort_ele;
     for (i = 1; i < n; i++)
     {
         unsort_ele = a[i];
@@ -23,10 +33,6 @@ void main()
             j--;
         }
         a[j + 1] = unsort_ele;
-    }
-    for (i = 0; i < n; i++)
-    {
-        printf("Element - %d: %d\n", i, a[i]);
     }
 }
 /*

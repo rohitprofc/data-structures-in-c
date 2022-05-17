@@ -1,6 +1,7 @@
 // Bubble Sorting
 
 #include <stdio.h>
+void bubble_sort(int[], int);
 void main()
 {
     int a[100], i, j, n, key;
@@ -13,6 +14,15 @@ void main()
         scanf("%d", &a[i]);
     }
     printf("Elements after sorting:\n");
+    bubble_sort(a, n);
+    for (i = 0; i < n; i++)
+    {
+        printf("Element - %d: %d\n", i, a[i]);
+    }
+}
+void bubble_sort(int a[], int n)
+{
+    int i, key, j;
     for (i = 0; i < n; i++)
     {
         key = a[i];
@@ -23,10 +33,6 @@ void main()
             j--;
         }
         a[j + 1] = key;
-    }
-    for (i = 0; i < n; i++)
-    {
-        printf("Element - %d: %d\n", i, a[i]);
     }
 }
 /*

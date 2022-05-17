@@ -1,6 +1,7 @@
 // Selection Sorting
 
-#include<stdio.h>
+#include <stdio.h>
+void selection_sort(int[], int);
 void main()
 {
     int a[100], i, j, n, min, temp;
@@ -13,26 +14,31 @@ void main()
         scanf("%d", &a[i]);
     }
     printf("Elements after sorting:\n");
-    for(i=0;i<n;i++)
+    selection_sort(a, n);
+    for (i = 0; i < n; i++)
+    {
+        printf("Element - %d: %d\n", i, a[i]);
+    }
+}
+void selection_sort(int a[], int n)
+{
+    int i, j, min, temp;
+    for (i = 0; i < n; i++)
     {
         min = i;
-        for(j=i+1;j<n;j++)
+        for (j = i + 1; j < n; j++)
         {
-            if(a[j]<a[min])
+            if (a[j] < a[min])
             {
                 min = j;
             }
         }
-        if(min!=i)
+        if (min != i)
         {
             temp = a[i];
             a[i] = a[min];
             a[min] = temp;
         }
-    }
-    for (i = 0; i < n; i++)
-    {
-        printf("Element - %d: %d\n", i, a[i]);
     }
 }
 /*
