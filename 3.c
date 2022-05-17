@@ -24,7 +24,6 @@ void main()
     {
         printf("Key value not found\n");
     }
-    
 }
 int nonrecur_search(int a[], int key, int low, int high)
 {
