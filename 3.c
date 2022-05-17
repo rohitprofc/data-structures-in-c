@@ -1,10 +1,11 @@
 // Binary Search Non - Recursion
 
 #include <stdio.h>
+int nonrecur_search(int[], int, int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, key, mid, low = 0, high;
-    printf("Enter no.of elements in an array: \n");
+    printf("Enter no.of elements in an array: ");
     scanf("%d", &n);
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)
@@ -14,13 +15,26 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    high = n - 1;
+    found = nonrecur_search(a, key, 0, n - 1, found);
+    if (found == 1)
+    {
+        printf("Search is successful\n");
+    }
+    else
+    {
+        printf("Key value not found\n");
+    }
+    
+}
+int nonrecur_search(int a[], int key, int low, int high, int found)
+{
     while (low <= high)
     {
-        mid = (low + high) / 2;
+        int mid = (low + high) / 2;
         if (key == a[mid])
         {
-            found = 1;
+            printf("Key value found at position %d\n", mid);
+            return 1;
             break;
         }
         else if (key < a[mid])
@@ -31,15 +45,6 @@ void main()
         {
             low = mid + 1;
         }
-    }
-    if (found == 1)
-    {
-        printf("Key value found at position %d\n", mid);
-        printf("Search is successful\n");
-    }
-    else
-    {
-        printf("Key value not found\n");
     }
 }
 /*
