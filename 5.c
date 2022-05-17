@@ -1,10 +1,10 @@
-// Insertion Sorting
+// Bubble Sorting
 
 #include <stdio.h>
-void insertion_sort(int[], int);
+void bubble_sort(int[], int);
 void main()
 {
-    int a[100], i, j, n, unsort_ele;
+    int a[100], i, j, n, key;
     printf("Enter no.of elements: ");
     scanf("%d", &n);
     printf("Enter elements into array: \n");
@@ -14,40 +14,40 @@ void main()
         scanf("%d", &a[i]);
     }
     printf("Elements after sorting:\n");
-    insertion_sort(a, n);
+    bubble_sort(a, n);
     for (i = 0; i < n; i++)
     {
         printf("Element - %d: %d\n", i, a[i]);
     }
 }
-void insertion_sort(int a[], int n)
+void bubble_sort(int a[], int n)
 {
-    int i, j, unsort_ele;
-    for (i = 1; i < n; i++)
+    int i, key, j;
+    for (i = 0; i < n; i++)
     {
-        unsort_ele = a[i];
+        key = a[i];
         j = i - 1;
-        while (j >= 0 && a[j] > unsort_ele)
+        while (j >= 0 && a[j] > key)
         {
             a[j + 1] = a[j];
             j--;
         }
-        a[j + 1] = unsort_ele;
+        a[j + 1] = key;
     }
 }
 /*
 Output:-
 Enter no.of elements: 5
 Enter elements into array:
-Element - 0: 63
-Element - 1: 55
-Element - 2: 45
-Element - 3: 51
-Element - 4: 57
+Element - 0: 90
+Element - 1: 10
+Element - 2: 80
+Element - 3: 20
+Element - 4: 70
 Elements after sorting:
-Element - 0: 45
-Element - 1: 51
-Element - 2: 55
-Element - 3: 57
-Element - 4: 63
+Element - 0: 10
+Element - 1: 20
+Element - 2: 70
+Element - 3: 80
+Element - 4: 90
 */
