@@ -9,5 +9,5 @@ Output:-
 Hola!
 I'm Rohit
 I play chess
-what about a game??
+How about a game??
 */
