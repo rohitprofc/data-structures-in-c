@@ -7,7 +7,7 @@ void main()
     int a[100], i, found = 0, n, key, mid, low = 0, high;
     printf("Enter no.of elements in an array: ");
     scanf("%d", &n);
-    printf("Enter elements into array:\n");
+    printf("Enter elements into array: ");
     for (i = 0; i < n; i++)
     {
         printf("Element - %d: ", i);

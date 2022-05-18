@@ -5,7 +5,7 @@ int recur_search(int[], int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, mid, key, low, high;
-    printf("Enter no.of elements in an array: \n");
+    printf("Enter no.of elements in an array: ");
     scanf("%d", &n);
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)
