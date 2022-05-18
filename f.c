@@ -22,17 +22,18 @@ void main()
 }
 void bubble_sort(int a[], int n)
 {
-    int i, key, j;
+    int i, j, temp;
     for (i = 0; i < n; i++)
     {
-        key = a[i];
-        j = i - 1;
-        while (j >= 0 && a[j] > key)
+        for (j = 0; j < n - 1 - i; j++)
         {
-            a[j + 1] = a[j];
-            j--;
+            if (a[j] > a[j + 1])
+            {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
         }
-        a[j + 1] = key;
     }
 }
 /*
