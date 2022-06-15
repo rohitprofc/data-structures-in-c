@@ -8,3 +8,6 @@
 + f - Bubble Sorting
 + g - Insersion Sorting
 + h - Selection Sorting
++ i - Create a SLL
++ j - Insert a node into SLL
++ K - Delete a node from SLL
