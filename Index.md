@@ -10,4 +10,14 @@
 + h - Selection Sorting
 + i - Create a SLL
 + j - Insert a node into SLL
-+ K - Delete a node from SLL
++ k - Delete a node from SLL
++ l - Create a CLL
++ m - Insert a node into CLL
++ n - Delete a node from CLL
++ o - Create a DLL
++ p - Insert a node into DLL
++ q - Delete a node from DLL
++ r - Stack using arrays
++ s - Queue using linked list
++ t - Covert infix expression to postfix
++ u - Postfix expression evaluation
