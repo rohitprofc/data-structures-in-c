@@ -10,13 +10,13 @@ struct node
 struct node *ptr, *header, *new;
 void main()
 {
-    int ch;
+    int choice;
     header = NULL;
     while (1)
     {
-        printf("\nEnter the choice of operation\n1.Creation\n2.Transversal\n3.Terminate the program\n");
-        scanf("%d", &ch);
-        switch (ch)
+        printf("\nEnter the choice of operation\n1.Creation    2.Transversal: ");
+        scanf("%d", &choice);
+        switch (choice)
         {
         case 1:
             creation();
@@ -67,51 +67,30 @@ void transversal()
 /*
 Output:-
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-1
+1.Creation    2.Transversal: 1
 Enter data value to insert: 10
 
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-1
-Enter data value to insert: 20
+1.Creation    2.Transversal: 5
+PS C:\Users\Rohit Chess\Desktop\Data-Structures-in-C> cd "c:\Users\Rohit Chess\Desktop\Data-Structures-in-C\" ; if ($?) { gcc i.c -o i } ; if ($?) { .\i }
 
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-1
-Enter data value to insert: 30
+1.Creation    2.Transversal: 1
+Enter data value to insert: 51
 
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-1
-Enter data value to insert: 40
+1.Creation    2.Transversal: 1
+Enter data value to insert: 53
 
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-1
-Enter data value to insert: 50
+1.Creation    2.Transversal: 1
+Enter data value to insert: 57
 
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-2
+1.Creation    2.Transversal: 2
 
 Elements in the list are:
- 10  20  30  40  50 
+ 51  53  57
 Enter the choice of operation
-1.Creation
-2.Transversal
-3.Terminate the program
-3
+1.Creation    2.Transversal: 4
 */
