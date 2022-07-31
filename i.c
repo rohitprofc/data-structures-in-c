@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 void creation();
-void transversal();
+void display();
 struct node
 {
     int data;
@@ -14,7 +14,7 @@ void main()
     header = NULL;
     while (1)
     {
-        printf("\nEnter the choice of operation\n1.Creation    2.Transversal: ");
+        printf("\nEnter the choice of operation\n1.Creation    2.Display: ");
         scanf("%d", &choice);
         switch (choice)
         {
@@ -22,7 +22,7 @@ void main()
             creation();
             break;
         case 2:
-            transversal();
+            display();
             break;
 
         default:
@@ -38,8 +38,8 @@ void creation()
     scanf("%d", &dataElement);
     if (header == NULL)
     {
-        new->data = dataElement;
         new->link = NULL;
+        new->data = dataElement;
         header = new;
     }
     else
@@ -54,7 +54,7 @@ void creation()
         new->link = NULL;
     }
 }
-void transversal()
+void display()
 {
     printf("\nElements in the list are:\n");
     ptr = header;
@@ -67,30 +67,22 @@ void transversal()
 /*
 Output:-
 Enter the choice of operation
-1.Creation    2.Transversal: 1
+1.Creation    2.Display: 1   
 Enter data value to insert: 10
 
 Enter the choice of operation
-1.Creation    2.Transversal: 5
-PS C:\Users\Rohit Chess\Desktop\Data-Structures-in-C> cd "c:\Users\Rohit Chess\Desktop\Data-Structures-in-C\" ; if ($?) { gcc i.c -o i } ; if ($?) { .\i }
+1.Creation    2.Display: 1   
+Enter data value to insert: 20
 
 Enter the choice of operation
-1.Creation    2.Transversal: 1
-Enter data value to insert: 51
+1.Creation    2.Display: 1
+Enter data value to insert: 30
 
 Enter the choice of operation
-1.Creation    2.Transversal: 1
-Enter data value to insert: 53
-
-Enter the choice of operation
-1.Creation    2.Transversal: 1
-Enter data value to insert: 57
-
-Enter the choice of operation
-1.Creation    2.Transversal: 2
+1.Creation    2.Display: 2
 
 Elements in the list are:
- 51  53  57
+ 10  20  30
 Enter the choice of operation
-1.Creation    2.Transversal: 4
+1.Creation    2.Display: 3
 */
