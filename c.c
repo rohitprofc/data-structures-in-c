@@ -1,7 +1,7 @@
 // Linear Search with Recursion
 
 #include <stdio.h>
-int recur_search(int[], int, int, int);
+int linear_recur_search(int[], int, int, int);
 void main()
 {
     int a[100], n, key, i, found = 0;
@@ -25,7 +25,7 @@ void main()
         printf("Key value not found\n");
     }
 }
-int recur_search(int a[], int n, int key, int i)
+int linear_recur_search(int a[], int n, int key, int i)
 {
     if (i < n)
     {

@@ -1,7 +1,7 @@
 // Binary Search Non - Recursion
 
 #include <stdio.h>
-int nonrecur_search(int[], int, int, int);
+int binary_nonrecur_search(int[], int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, key, mid, low = 0, high;
@@ -25,7 +25,7 @@ void main()
         printf("Key value not found\n");
     }
 }
-int nonrecur_search(int a[], int key, int low, int high)
+int binary_nonrecur_search(int a[], int key, int low, int high)
 {
     while (low <= high)
     {

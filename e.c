@@ -1,7 +1,7 @@
 // Binary Search with Recursion
 
 #include <stdio.h>
-int recur_search(int[], int, int, int);
+int binary_recur_search(int[], int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, mid, key, low, high;
@@ -23,7 +23,7 @@ void main()
     else
         printf("Key value not found\n");
 }
-int recur_search(int a[], int key, int low, int high)
+int binary_recur_search(int a[], int key, int low, int high)
 {
     int mid = (low + high)/2;
     if (low <= mid)

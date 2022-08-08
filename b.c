@@ -1,7 +1,7 @@
 // Linear Search Non - Recursion
 
 #include <stdio.h>
-int nonrecur_search(int[], int, int, int);
+int linear_nonrecur_search(int[], int, int, int);
 void main()
 {
     int a[100], i, found = 0, n, key;
@@ -25,7 +25,7 @@ void main()
         printf("Key value not found\n");
     }
 }
-int nonrecur_search(int a[], int i, int key, int n)
+int linear_nonrecur_search(int a[], int i, int key, int n)
 {
     for (i = 0; i < n; i++)
     {
