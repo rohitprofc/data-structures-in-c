@@ -15,7 +15,7 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    found = recur_search(a, n, key, 0);
+    found = linear_recur_search(a, n, key, 0);
     if (found == 1)
     {
         printf("Search is successful\n");
@@ -37,7 +37,7 @@ int linear_recur_search(int a[], int n, int key, int i)
         else
         {
             i++;
-            recur_search(a, n, key, i);
+            linear_recur_search(a, n, key, i);
         }
     }
 }

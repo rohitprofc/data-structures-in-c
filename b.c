@@ -15,7 +15,7 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    found = nonrecur_search(a, 0, key, n);
+    found = linear_nonrecur_search(a, 0, key, n);
     if (found == 1)
     {
         printf("Search Successful\n");

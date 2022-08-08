@@ -15,7 +15,7 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    found = recur_search(a, key, 0, n-1);
+    found = binary_recur_search(a, key, 0, n-1);
     if (found == 1)
     {
         printf("Search is successful\n");
@@ -35,11 +35,11 @@ int binary_recur_search(int a[], int key, int low, int high)
         }
         else if (key < a[mid])
         {
-            recur_search(a, key, low, mid - 1);
+            binary_recur_search(a, key, low, mid - 1);
         }
         else
         {
-            recur_search(a, key, mid + 1, high);
+            binary_recur_search(a, key, mid + 1, high);
         }
     }
 }
