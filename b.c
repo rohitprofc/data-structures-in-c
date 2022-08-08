@@ -10,7 +10,7 @@ void main()
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)
     {
-        printf("Element - %d: ", i);
+        printf("Element - %d: ", i+1);
         scanf("%d", &a[i]);
     }
     printf("Enter key value: ");
@@ -40,20 +40,20 @@ int nonrecur_search(int a[], int i, int key, int n)
 Output 1:-
 Enter no.of elements in an array: 3
 Enter elements into array:
-Element - 0: 10
-Element - 1: 40
-Element - 2: 30
+Element - 1: 10
+Element - 2: 40
+Element - 3: 30
 Enter key value: 40
 Key value found at position 1
-Search is successful
+Search Successful
 */
 /*
 Output 2:-
 Enter no.of elements in an array: 3
 Enter elements into array:
-Element - 0: 10
-Element - 1: 40
-Element - 2: 30
+Element - 1: 10
+Element - 2: 40
+Element - 3: 30
 Enter key value: 50
 Key value not found
 */
