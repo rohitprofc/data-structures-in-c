@@ -8,14 +8,12 @@ void dfs(int v)
         if (a[v][i] && !reach[i])
         {
             printf("\n %d->%d", v, i);
-            // printf("\n %d",v);
             dfs(i);
         }
 }
 void main()
 {
     int i, j, count = 0;
-    // clrscr();
     printf("\n Enter number of vertices:");
     scanf("%d", &n);
     for (i = 1; i <= n; i++)
