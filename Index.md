@@ -21,4 +21,4 @@
 + s - Queue using linked list
 + t - Covert infix expression to postfix
 + u - Postfix expression evaluation
-+ v - BFS, DFS
++ v - BFS, DFS 
