@@ -23,3 +23,5 @@
 + u - Postfix expression evaluation
 + v - DFS
 + w - BFS
++ x - Heap sort
++ y - Hash table
