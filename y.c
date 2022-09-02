@@ -16,7 +16,7 @@ int main()
     }
     while (1)
     {
-        printf("\nEnter your choice \n1.Insert\n2.Deletion\n3.Search\n4.Display\n5.Search\n6.Exit: ");
+        printf("\nEnter your choice \n1.Insert\n2.Deletion\n3.Search\n4.Display\n5.Exit: ");
         scanf("%d", &ch);
         switch (ch)
         {
@@ -102,8 +102,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 1
+5.Exit: 1
 
 Enter the value to insert: 10
 
@@ -113,8 +112,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 1
+5.Exit: 1
 
 Enter the value to insert: 11
 
@@ -124,8 +122,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 1
+5.Exit: 1
 
 Enter the value to insert: 12
 
@@ -135,8 +132,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 1
+5.Exit: 1
 
 Enter the value to insert: 13
 
@@ -146,8 +142,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 1
+5.Exit: 1
 
 Enter the value to insert: 14
 
@@ -157,8 +152,7 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 4
+5.Exit: 4
 
 a[0]: 10
 a[1]: 11
@@ -170,41 +164,25 @@ Enter your choice
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 2
+5.Exit: 2
 
-Enter the value to delete: 14
+Enter the value to delete: 13
 
-14 is deleted
+13 is deleted
 Enter your choice
 1.Insert
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 3
+5.Exit: 3
 
-Enter the search value: 11
+Enter the search value: 14
 
-11 is found at location 1
+14 is found at location 4
 Enter your choice
 1.Insert
 2.Deletion
 3.Search
 4.Display
-5.Search
-6.Exit: 4
-
-a[0]: 10
-a[1]: 11
-a[2]: 12
-a[3]: 13
-a[4]: -1
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Search
-6.Exit: 6
+5.Exit: 5
 */
