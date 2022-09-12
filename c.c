@@ -17,13 +17,9 @@ void main()
     scanf("%d", &key);
     found = linear_recur_search(a, n, key, 0);
     if (found == 1)
-    {
         printf("Search is successful\n");
-    }
     else
-    {
         printf("Key value not found\n");
-    }
 }
 int linear_recur_search(int a[], int n, int key, int i)
 {
@@ -35,10 +31,7 @@ int linear_recur_search(int a[], int n, int key, int i)
             return 1;
         }
         else
-        {
-            i++;
-            linear_recur_search(a, n, key, i);
-        }
+            linear_recur_search(a, n, key, i + 1);
     }
 }
 /*
@@ -52,7 +45,7 @@ Enter key value: 50
 Key value found at position 1
 Search is successful
 */
-/* 
+/*
 Output 2:-
 Enter no.of elements in an array: 3
 Enter elements into array:

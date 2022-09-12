@@ -16,9 +16,7 @@ void main()
     printf("Elements after sorting:\n");
     bubble_sort(a, n);
     for (i = 0; i < n; i++)
-    {
         printf("Element - %d: %d\n", i, a[i]);
-    }
 }
 void bubble_sort(int a[], int n)
 {

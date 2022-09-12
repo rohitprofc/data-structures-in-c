@@ -10,31 +10,25 @@ void main()
     printf("Enter elements into array:\n");
     for (i = 0; i < n; i++)
     {
-        printf("Element - %d: ", i+1);
+        printf("Element - %d: ", i + 1);
         scanf("%d", &a[i]);
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    found = linear_nonrecur_search(a, 0, key, n);
+    found = linear_nonrecur_search(a, key, 0, n);
     if (found == 1)
-    {
         printf("Search Successful\n");
-    }
     else
-    {
         printf("Key value not found\n");
-    }
 }
-int linear_nonrecur_search(int a[], int i, int key, int n)
+int linear_nonrecur_search(int a[], int key, int i, int n)
 {
     for (i = 0; i < n; i++)
-    {
         if (key == a[i])
         {
             printf("Key value found at position %d\n", i);
             return 1;
         }
-    }
 }
 /*
 Output 1:-

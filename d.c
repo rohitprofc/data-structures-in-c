@@ -17,13 +17,9 @@ void main()
     scanf("%d", &key);
     found = binary_nonrecur_search(a, key, 0, n - 1);
     if (found == 1)
-    {
         printf("Search is successful\n");
-    }
     else
-    {
         printf("Key value not found\n");
-    }
 }
 int binary_nonrecur_search(int a[], int key, int low, int high)
 {
@@ -34,16 +30,11 @@ int binary_nonrecur_search(int a[], int key, int low, int high)
         {
             printf("Key value found at position %d\n", mid);
             return 1;
-            break;
         }
         else if (key < a[mid])
-        {
             high = mid - 1;
-        }
         else
-        {
             low = mid + 1;
-        }
     }
 }
 /*

@@ -15,17 +15,15 @@ void main()
     }
     printf("Enter key value: ");
     scanf("%d", &key);
-    found = binary_recur_search(a, key, 0, n-1);
+    found = binary_recur_search(a, key, 0, n - 1);
     if (found == 1)
-    {
         printf("Search is successful\n");
-    }
     else
         printf("Key value not found\n");
 }
 int binary_recur_search(int a[], int key, int low, int high)
 {
-    int mid = (low + high)/2;
+    int mid = (low + high) / 2;
     if (low <= mid)
     {
         if (key == a[mid])
@@ -34,13 +32,9 @@ int binary_recur_search(int a[], int key, int low, int high)
             return 1;
         }
         else if (key < a[mid])
-        {
             binary_recur_search(a, key, low, mid - 1);
-        }
         else
-        {
             binary_recur_search(a, key, mid + 1, high);
-        }
     }
 }
 /*

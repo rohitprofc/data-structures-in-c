@@ -16,9 +16,7 @@ void main()
     printf("Elements after sorting:\n");
     selection_sort(a, n);
     for (i = 0; i < n; i++)
-    {
         printf("Element - %d: %d\n", i, a[i]);
-    }
 }
 void selection_sort(int a[], int n)
 {
