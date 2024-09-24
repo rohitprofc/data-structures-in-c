@@ -1,64 +1,46 @@
 // Binary Search with Recursion
 
 #include <stdio.h>
+
 int binary_recur_search(int[], int, int, int);
-void main()
-{
-    int a[100], i, found = 0, n, mid, key, low, high;
-    printf("Enter no.of elements in an array: ");
+
+int main() {
+    int a[100], i, found = 0, n, key;
+    
+    printf("Enter number of elements in the array: ");
     scanf("%d", &n);
-    printf("Enter elements into array:\n");
-    for (i = 0; i < n; i++)
-    {
+    
+    printf("Enter sorted elements into the array:\n");
+    for (i = 0; i < n; i++) {
         printf("Element - %d: ", i);
         scanf("%d", &a[i]);
     }
+    
     printf("Enter key value: ");
     scanf("%d", &key);
+    
     found = binary_recur_search(a, key, 0, n - 1);
-    if (found == 1)
-        printf("Search is successful\n");
+    
+    if (found != -1)
+        printf("Key value found at position %d\n", found);
     else
         printf("Key value not found\n");
+
+    return 0;
 }
-int binary_recur_search(int a[], int key, int low, int high)
-{
-    int mid = (low + high) / 2;
-    if (low <= mid)
-    {
-        if (key == a[mid])
-        {
-            printf("Key value found at position %d\n", mid);
-            return 1;
-        }
-        else if (key < a[mid])
-            binary_recur_search(a, key, low, mid - 1);
-        else
-            binary_recur_search(a, key, mid + 1, high);
+
+int binary_recur_search(int a[], int key, int low, int high) {
+    if (low > high) {
+        return -1;  // Base case: key not found
+    }
+    
+    int mid = low + (high - low) / 2;  // Prevent overflow
+    
+    if (key == a[mid]) {
+        return mid;  // Key found, return the index
+    } else if (key < a[mid]) {
+        return binary_recur_search(a, key, low, mid - 1);  // Search left half
+    } else {
+        return binary_recur_search(a, key, mid + 1, high);  // Search right half
     }
 }
-/*
-Output 1:-
-Enter no.of elements in an array: 5
-Enter elements into array:
-Element - 0: 10
-Element - 1: 30
-Element - 2: 50
-Element - 3: 70
-Element - 4: 90
-Enter key value: 30
-Key value found at position 1
-Search is successful
-*/
-/*
-Output 2:-
-Enter no.of elements in an array: 5
-Enter elements into array:
-Element - 0: 10
-Element - 1: 30
-Element - 2: 50
-Element - 3: 70
-Element - 4: 90
-Enter key value: 80
-Key value not found
-*/

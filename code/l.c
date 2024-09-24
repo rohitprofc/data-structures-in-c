@@ -1,87 +1,83 @@
+// Create a CLL
+
 #include <stdio.h>
 #include <stdlib.h>
-void create();
-void display();
-struct node
-{
+
+struct node {
     int data;
     struct node *link;
-} * ptr, *header, *new;
-void main()
-{
-    int choice;
-    header = (struct node *)malloc(sizeof(struct node));
-    header->link = header;
-    while (1)
-    {
-        printf("\nEnter the choice of operation\n1.Creation  2.Display: ");
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            create();
-            break;
-        case 2:
-            display();
-            break;
+} *header = NULL;
 
-        default:
-            exit(0);
+void create();
+void display();
+
+int main() {  // Changed from void main() to int main()
+    int choice;
+
+    // Initialize header
+    header = (struct node *)malloc(sizeof(struct node));
+    if (!header) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    header->link = header;  // Initialize to point to itself (circular)
+
+    while (1) {
+        printf("\nEnter the choice of operation\n1. Creation  2. Display  3. Exit: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                create();
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
         }
     }
 }
-void create()
-{
+
+void create() {
     int dataElement;
     printf("Enter data value to insert: ");
     scanf("%d", &dataElement);
-    new = (struct node *)malloc(sizeof(struct node));
-    if (header->link != header)
-    {
-        new->link = header->link;
-        new->data = dataElement;
-        header->link = new;
+
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    if (!newNode) {
+        printf("Memory allocation failed\n");
+        return;
     }
-    else
-    {
-        header->link = new;
-        new->link = header;
-        new->data = dataElement;
+    
+    newNode->data = dataElement;
+
+    if (header->link == header) {  // List is empty
+        newNode->link = header;     // Link the new node to header
+        header->link = newNode;     // Header points to the new node
+    } else {
+        struct node *last = header;
+        // Find the last node
+        while (last->link != header) {
+            last = last->link;
+        }
+        last->link = newNode;  // Link last node to new node
+        newNode->link = header; // New node points to header
     }
 }
-void display()
-{
+
+void display() {
+    if (header->link == header) {
+        printf("The list is empty.\n");
+        return;
+    }
+
     printf("\nElements in the list are:\n");
-    ptr = header;
-    while (ptr->link != header)
-    {
-        ptr = ptr->link;
-        printf(" %d ", ptr->data);
-    }
+    struct node *ptr = header->link;  // Start from the first node
+    do {
+        printf("%d ", ptr->data);
+        ptr = ptr->link;  // Move to the next node
+    } while (ptr != header->link);  // Stop when we circle back to the start
+    printf("\n");
 }
-/*
-Output: -
-Enter the choice of operation
-1.Creation  2.Display: 1
-Enter data value to insert: 10
-
-Enter the choice of operation
-1.Creation  2.Display: 1
-Enter data value to insert: 20
-
-Enter the choice of operation
-1.Creation  2.Display: 1
-Enter data value to insert: 30
-
-Enter the choice of operation
-1.Creation  2.Display: 1
-Enter data value to insert: 40
-
-Enter the choice of operation
-1.Creation  2.Display: 2
-
-Elements in the list are:
- 40  30  20  10
-Enter the choice of operation
-1.Creation  2.Display: 3
-*/

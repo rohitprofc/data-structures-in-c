@@ -1,148 +1,106 @@
+// Insert a node into CLL
+
 #include <stdio.h>
 #include <stdlib.h>
-void insertion();
-void display();
-struct node
-{
+
+struct node {
     int data;
     struct node *link;
-} * ptr, *header, *new;
-void main()
-{
+} *header = NULL;
+
+void insertion();
+void display();
+
+int main() {  // Changed from void main() to int main()
     int choice;
+
+    // Initialize header
     header = (struct node *)malloc(sizeof(struct node));
-    header->link = header;
-    while (1)
-    {
-        printf("\nEnter the choice of operation\n1.Insertion  2.Transversal: ");
+    if (!header) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    header->link = header;  // Initialize to point to itself (circular)
+
+    while (1) {
+        printf("\nEnter the choice of operation\n1. Insertion  2. Display  3. Exit: ");
         scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            insertion();
-            break;
-        case 2:
-            display();
-            break;
-        default:
-            exit(0);
+        switch (choice) {
+            case 1:
+                insertion();
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
         }
     }
 }
-void insertion()
-{
+
+void insertion() {
     int dataElement, key, position;
     printf("Enter data value to insert: ");
     scanf("%d", &dataElement);
-    new = (struct node *)malloc(sizeof(struct node));
-    printf("\nEnter the position of insertion\n1.Beginning  2.Ending  3.At any position:");
+    
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    if (!newNode) {
+        printf("Memory allocation failed\n");
+        return;
+    }
+    newNode->data = dataElement;
+
+    printf("\nEnter the position of insertion\n1. Beginning  2. End  3. At any position: ");
     scanf("%d", &position);
-    if (position == 1)
-    {
-        if (header->link != header)
-        {
-            new->link = header->link;
-            header->link = new;
-            new->data = dataElement;
+
+    if (position == 1) {
+        if (header->link == header) {  // List is empty
+            newNode->link = header;
+            header->link = newNode;
+        } else {  // List is not empty
+            newNode->link = header->link;
+            header->link = newNode;
         }
-        else
-        {
-            header->link = new;
-            new->link = header;
-            new->data = dataElement;
+    } else if (position == 2) {
+        struct node *ptr = header;
+        while (ptr->link != header) {
+            ptr = ptr->link;  // Traverse to the last node
         }
-    }
-    else if (position == 2)
-    {
-        ptr = header;
-        while (ptr->link != header)
-        {
-            ptr = ptr->link;
-        }
-        ptr->link = new;
-        new->link = header;
-        new->data = dataElement;
-    }
-    else if (position == 3)
-    {
+        ptr->link = newNode;
+        newNode->link = header;  // New node points to header
+    } else if (position == 3) {
         printf("\nEnter key value: ");
         scanf("%d", &key);
-        ptr = header;
-        while (ptr->link != header && ptr->data != key)
-        {
-            ptr = ptr->link;
+        struct node *ptr = header;
+        while (ptr->link != header && ptr->data != key) {
+            ptr = ptr->link;  // Traverse until we find the key or come back to header
         }
-        if (ptr->link == header)
-        {
-            if (ptr->data == key)
-            {
-                new->link = ptr->link;
-                ptr->link = new;
-                new->data = dataElement;
-            }
-            else
-            {
-                printf("\nKey not available");
-            }
+        if (ptr->data == key) {
+            newNode->link = ptr->link;
+            ptr->link = newNode;  // Insert new node after the found node
+        } else {
+            printf("\nKey not available\n");
+            free(newNode);  // Free allocated memory if not inserted
         }
-        else
-        {
-            new->link = ptr->link;
-            ptr->link = new;
-            new->data = dataElement;
-        }
+    } else {
+        printf("Invalid position choice.\n");
+        free(newNode);  // Free allocated memory if not inserted
     }
 }
-void display()
-{
+
+void display() {
+    if (header->link == header) {
+        printf("The list is empty.\n");
+        return;
+    }
+
     printf("\nElements in the list are:\n");
-    ptr = header;
-    while (ptr->link != header)
-    {
-        ptr = ptr->link;
+    struct node *ptr = header->link;  // Start from the first node
+    do {
         printf(" %d ", ptr->data);
-    }
+        ptr = ptr->link;  // Move to the next node
+    } while (ptr != header->link);  // Stop when we circle back to the start
+    printf("\n");
 }
-/*
-Output: -
-
-Enter the choice of operation
-1.Insertion  2.Transversal: 1
-Enter data value to insert: 10
-
-Enter the position of insertion
-1.Beginning  2.Ending  3.At any position:1
-
-Enter the choice of operation
-1.Insertion  2.Transversal: 1
-Enter data value to insert: 20
-
-Enter the position of insertion
-1.Beginning  2.Ending  3.At any position:2
-
-Enter the choice of operation
-1.Insertion  2.Transversal: 1
-Enter data value to insert: 30
-
-Enter the position of insertion
-1.Beginning  2.Ending  3.At any position:3
-
-Enter key value: 10
-
-Enter the choice of operation
-1.Insertion  2.Transversal: 1
-Enter data value to insert: 40
-
-Enter the position of insertion
-1.Beginning  2.Ending  3.At any position:3
-
-Enter key value: 20
-
-Enter the choice of operation
-1.Insertion  2.Transversal: 2
-
-Elements in the list are:
- 10  30  20  40
-Enter the choice of operation
-1.Insertion  2.Transversal: 4
-*/

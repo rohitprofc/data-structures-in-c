@@ -1,69 +1,66 @@
+// Postfix expression evaluation
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
+
 int top = -1;
 int stack[100];
-void push(int dataItem)
-{
+
+void push(int dataItem) {
     stack[++top] = dataItem;
 }
-int pop()
-{
+
+int pop() {
     return stack[top--];
 }
-void main()
-{
+
+int main() {
     char str[100];
     char *ptr;
-    int num, n, n1, n2;
-    printf("Enter the expression: ");
+    int num, n1, n2, result;
+
+    printf("Enter the postfix expression: ");
     scanf("%s", str);
+
     ptr = str;
-    while (*ptr != '\0')
-    {
-        if (isdigit(*ptr))
-        {
-            num = *ptr - 48;
+    while (*ptr != '\0') {
+        if (isdigit(*ptr)) {
+            num = *ptr - '0'; // Convert char digit to integer
             push(num);
-        }
-        else
-        {
-            n = pop();
-            n1 = pop();
-            switch (*ptr)
-            {
-            case '+':
-                n2 = n + n1;
-                break;
-            case '-':
-                n2 = n - n1;
-                break;
-            case '*':
-                n2 = n * n1;
-                break;
-            case '/':
-                n2 = n / n1;
-                break;
-            case '%':
-                n2 = n % n1;
-                break;
-            case '^':
-                n2 = n ^ n1;
-                break;
-            default:
-                break;
+        } else {
+            n2 = pop(); // Second operand (right side)
+            n1 = pop(); // First operand (left side)
+
+            switch (*ptr) {
+                case '+':
+                    result = n1 + n2;
+                    break;
+                case '-':
+                    result = n1 - n2; // Correct order for subtraction
+                    break;
+                case '*':
+                    result = n1 * n2;
+                    break;
+                case '/':
+                    result = n1 / n2; // Correct order for division
+                    break;
+                case '%':
+                    result = n1 % n2;
+                    break;
+                case '^':
+                    result = (int)pow(n1, n2); // Use pow() for exponentiation
+                    break;
+                default:
+                    printf("Invalid operator encountered\n");
+                    exit(1);
             }
-            push(n2);
+            push(result);
         }
         ptr++;
     }
-    printf("The result is %d", pop());
+
+    printf("The result is %d\n", pop());
+    return 0;
 }
-/*
-Output: -
-Enter the expression: 51-
-The result is -4
-Output 2: -
-Enter the expression: 5145+**
-The result is 45
-*/

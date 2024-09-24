@@ -1,113 +1,106 @@
+// Covert infix expression to postfix
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+
 char stack[100];
 int top = -1;
-void push(char dataItem)
-{
+
+void push(char dataItem) {
     stack[++top] = dataItem;
 }
-int pop()
-{
-    if (top == -1)
-    {
+
+int pop() {
+    if (top == -1) {
         return -1;
-    }
-    else
-    {
+    } else {
         return stack[top--];
     }
 }
-int priority(char dataItem)
-{
-    if (dataItem == '(')
-    {
+
+int priority(char dataItem) {
+    if (dataItem == '(') {
         return 0;
-    }
-    else if (dataItem == '+' || dataItem == '-')
-    {
+    } else if (dataItem == '+' || dataItem == '-') {
         return 1;
-    }
-    else if (dataItem == '*' || dataItem == '/')
-    {
+    } else if (dataItem == '*' || dataItem == '/') {
         return 2;
-    }
-    else if (dataItem == '^')
-    {
+    } else if (dataItem == '^') {
         return 3;
     }
     return 0;
 }
-int main()
-{
+
+int isRightAssociative(char op) {
+    return (op == '^');  // '^' is right associative
+}
+
+int hasHigherPrecedence(char op1, char op2) {
+    int p1 = priority(op1);
+    int p2 = priority(op2);
+
+    if (p1 == p2) {
+        // If operators are of equal precedence, return true if not right associative
+        if (isRightAssociative(op1)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+    return p1 > p2;
+}
+
+int isValidCharacter(char c) {
+    return isalnum(c) || c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '(' || c == ')';
+}
+
+int main() {
     char str[100], *ptr, dataItem;
-    int stringLength, i, count = 0;
+    int i, invalid = 0;
+
     printf("\nEnter infix expression: ");
     scanf("%s", str);
-    stringLength = strlen(str);
-    for (i = 0; i < stringLength; i++)
-    {
-        if (isalnum(str[i]) || str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == '^' || str[i] == '(' || str[i] == ')')
-        {
-            count = 0;
-        }
-        else
-        {
-            count = 1;
+
+    // Validate the expression
+    for (i = 0; str[i] != '\0'; i++) {
+        if (!isValidCharacter(str[i])) {
+            invalid = 1;
             break;
         }
     }
-    if (count == 1)
 
-    {
-        printf("\nInvalid Expression");
+    if (invalid) {
+        printf("\nInvalid Expression\n");
+        return 1;
     }
-    else
-    {
-        ptr = str;
-        while (*ptr != '\0')
-        {
-            if (isalnum(*ptr))
-            {
-                printf("%c ", *ptr);
+
+    ptr = str;
+    while (*ptr != '\0') {
+        if (isalnum(*ptr)) {
+            printf("%c", *ptr);  // Output operands directly
+        } else if (*ptr == '(') {
+            push(*ptr);
+        } else if (*ptr == ')') {
+            while ((dataItem = pop()) != '(') {
+                printf("%c", dataItem);  // Pop until '(' is found
             }
-            else if (*ptr == '(')
-            {
-                push(*ptr);
+        } else {
+            // Handle operators
+            while (top != -1 && !isRightAssociative(*ptr) && hasHigherPrecedence(stack[top], *ptr)) {
+                printf("%c", pop());
             }
-            else if (*ptr == ')')
-            {
-                while ((dataItem = pop()) != '(')
-                {
-                    printf("%c ", dataItem);
-                }
-            }
-            else
-            {
-                while (priority(stack[top]) >= priority(*ptr))
-                {
-                    printf("%c ", pop());
-                }
-                push(*ptr);
-            }
-            ptr++;
+            push(*ptr);
         }
-        while (top != -1)
-        {
-            printf("%c ", pop());
-        }
-        printf("\n");
+        ptr++;
     }
+
+    // Pop all remaining operators
+    while (top != -1) {
+        printf("%c", pop());
+    }
+    printf("\n");
+
     return 0;
 }
-
-/*
-Output 1: -
-Enter infix expression: (a+b)*c+(d-a)
-a b + c * d a - +
-
-Output 2: -
-Enter infix expression: ((5+1)(4-5))/((2-8)(1+6))
-5 1 + 4 5 - 2 8 - 1 6 + /
-*/

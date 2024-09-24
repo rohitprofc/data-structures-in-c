@@ -1,52 +1,51 @@
 // Bubble Sorting
 
 #include <stdio.h>
+
 void bubble_sort(int[], int);
-void main()
-{
-    int a[100], i, j, n, key;
-    printf("Enter no.of elements: ");
+
+int main() {
+    int a[100], i, n;
+    
+    printf("Enter number of elements: ");
     scanf("%d", &n);
-    printf("Enter elements into array: \n");
-    for (i = 0; i < n; i++)
-    {
+    
+    printf("Enter elements into the array: \n");
+    for (i = 0; i < n; i++) {
         printf("Element - %d: ", i);
         scanf("%d", &a[i]);
     }
-    printf("Elements after sorting:\n");
+    
     bubble_sort(a, n);
-    for (i = 0; i < n; i++)
+    
+    printf("Elements after sorting:\n");
+    for (i = 0; i < n; i++) {
         printf("Element - %d: %d\n", i, a[i]);
+    }
+
+    return 0;
 }
-void bubble_sort(int a[], int n)
-{
+
+void bubble_sort(int a[], int n) {
     int i, j, temp;
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < n - 1 - i; j++)
-        {
-            if (a[j] > a[j + 1])
-            {
+    int swapped;  // Flag to check if any swaps were made
+    
+    for (i = 0; i < n - 1; i++) {
+        swapped = 0;  // Reset swapped flag at the beginning of each iteration
+        
+        for (j = 0; j < n - 1 - i; j++) {
+            if (a[j] > a[j + 1]) {
+                // Swap the elements
                 temp = a[j];
                 a[j] = a[j + 1];
                 a[j + 1] = temp;
+                swapped = 1;  // Set swapped flag to true when a swap is made
             }
+        }
+        
+        // If no elements were swapped, the array is already sorted
+        if (swapped == 0) {
+            break;
         }
     }
 }
-/*
-Output:-
-Enter no.of elements: 5
-Enter elements into array:
-Element - 0: 90
-Element - 1: 10
-Element - 2: 80
-Element - 3: 20
-Element - 4: 70
-Elements after sorting:
-Element - 0: 10
-Element - 1: 20
-Element - 2: 70
-Element - 3: 80
-Element - 4: 90
-*/

@@ -1,10 +1,14 @@
+// Hash table
+
 #include <stdio.h>
 #include <stdlib.h>
+
 void insert();
 void search();
 void del();
 void display();
 int ar[100], size;
+
 int main()
 {
     int i, ch;
@@ -12,7 +16,7 @@ int main()
     scanf("%d", &size);
     for (i = 0; i < size; i++)
     {
-        ar[i] = -1;
+        ar[i] = -1; // Initialize the hash table
     }
     while (1)
     {
@@ -38,53 +42,77 @@ int main()
     }
     return 0;
 }
+
 void insert()
 {
-    int value, key;
+    int value, key, i;
     printf("\nEnter the value to insert: ");
     scanf("%d", &value);
     key = value % size;
-    if (ar[key] == -1)
+
+    // Use linear probing for collision resolution
+    for (i = 0; i < size; i++)
     {
-        ar[key] = value;
-        printf("\n%d is inserted in the location %d: ", value, key);
+        int newKey = (key + i) % size; // New key with probing
+        if (ar[newKey] == -1) // Empty slot found
+        {
+            ar[newKey] = value;
+            printf("\n%d is inserted at location %d: ", value, newKey);
+            return;
+        }
     }
-    else
-    {
-        printf("\n%d not placed due to collision: ", value);
-    }
+    printf("\nHash table is full, %d could not be inserted.\n", value);
 }
+
 void del()
 {
-    int value, key;
+    int value, key, i;
     printf("\nEnter the value to delete: ");
     scanf("%d", &value);
     key = value % size;
-    if (ar[key] == value)
+
+    // Use linear probing to find the value
+    for (i = 0; i < size; i++)
     {
-        ar[key] = -1;
-        printf("\n%d is deleted", value);
+        int newKey = (key + i) % size; // New key with probing
+        if (ar[newKey] == value) // Element found
+        {
+            ar[newKey] = -1;
+            printf("\n%d is deleted", value);
+            return;
+        }
+        if (ar[newKey] == -1) // Empty slot encountered, break if not found
+        {
+            break;
+        }
     }
-    else
-    {
-        printf("\n%d element not found: ", value);
-    }
+    printf("\n%d element not found: ", value);
 }
+
 void search()
 {
-    int value, key;
+    int value, key, i;
     printf("\nEnter the search value: ");
     scanf("%d", &value);
     key = value % size;
-    if (ar[key] == value)
+
+    // Use linear probing to search for the value
+    for (i = 0; i < size; i++)
     {
-        printf("\n%d is found at location %d", value, key);
+        int newKey = (key + i) % size; // New key with probing
+        if (ar[newKey] == value) // Element found
+        {
+            printf("\n%d is found at location %d", value, newKey);
+            return;
+        }
+        if (ar[newKey] == -1) // Empty slot encountered, break if not found
+        {
+            break;
+        }
     }
-    else
-    {
-        printf("\n%d is not found: ", value);
-    }
+    printf("\n%d is not found: ", value);
 }
+
 void display()
 {
     int i;
@@ -93,96 +121,3 @@ void display()
         printf("\na[%d]: %d", i, ar[i]);
     }
 }
-/*
-Output: -
-Enter size of hash table: 5
-
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 1
-
-Enter the value to insert: 10
-
-10 is inserted in the location 0:
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 1
-
-Enter the value to insert: 11
-
-11 is inserted in the location 1:
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 1
-
-Enter the value to insert: 12
-
-12 is inserted in the location 2:
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 1
-
-Enter the value to insert: 13
-
-13 is inserted in the location 3:
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 1
-
-Enter the value to insert: 14
-
-14 is inserted in the location 4:
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 4
-
-a[0]: 10
-a[1]: 11
-a[2]: 12
-a[3]: 13
-a[4]: 14
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 2
-
-Enter the value to delete: 13
-
-13 is deleted
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 3
-
-Enter the search value: 14
-
-14 is found at location 4
-Enter your choice
-1.Insert
-2.Deletion
-3.Search
-4.Display
-5.Exit: 5
-*/
